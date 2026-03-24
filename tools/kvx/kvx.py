@@ -41,7 +41,12 @@ def cmd_init(args):
         print(f"error: {dst} already exists")
         return 1
 
+    if not TEMPLATE_DIR.exists():
+        print(f"error: template dir not found: {TEMPLATE_DIR}")
+        return 1
+
     dst.mkdir(parents=True)
+
     shutil.copy(TEMPLATE_DIR / "kvx.toml", dst / "kvx.toml")
     shutil.copy(TEMPLATE_DIR / "main.cpp", dst / "main.cpp")
     shutil.copy(TEMPLATE_DIR / "app.json", dst / "app.json")
@@ -65,6 +70,16 @@ def cmd_build(args):
     entry = Path(cfg.get("entry", "main.cpp"))
     ui = Path(cfg.get("ui", "app.json"))
     output = Path(cfg.get("output", "build/app.kef"))
+
+    if not entry.exists():
+        print(f"error: entry file not found: {entry}")
+        return 1
+    if not ui.exists():
+        print(f"error: ui file not found: {ui}")
+        return 1
+    if not LINKER.exists():
+        print(f"error: linker script not found: {LINKER}")
+        return 1
 
     build_dir = Path("build")
     obj_dir = build_dir / "obj"
