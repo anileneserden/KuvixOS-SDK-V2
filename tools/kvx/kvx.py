@@ -10,7 +10,7 @@ from pathlib import Path
 # ==========================
 # KVX META
 # ==========================
-KVX_VERSION = "0.1.0"
+KVX_VERSION = "0.1.1"
 VERSION_URL = "https://sdk.kuvixos.com.tr/version.json"
 
 # ==========================
@@ -352,6 +352,43 @@ def cmd_update_check(args):
     print(f"{CLR_CYAN}local version is newer than published version{CLR_RESET}")
     return 0
 
+def cmd_update(args):
+    print("checking for updates...")
+
+    try:
+        data = fetch_json(VERSION_URL)
+    except Exception as e:
+        print(f"{CLR_RED}failed to fetch version info{CLR_RESET}: {e}")
+        return 1
+
+    latest = str(data.get("latest", "")).strip()
+
+    if not latest:
+        print("invalid version data")
+        return 1
+
+    current_v = parse_version(KVX_VERSION)
+    latest_v = parse_version(latest)
+
+    if current_v >= latest_v:
+        print(f"{CLR_GREEN}already up to date{CLR_RESET}")
+        return 0
+
+    print(f"{CLR_YELLOW}updating kvx → {latest}{CLR_RESET}")
+
+    try:
+        subprocess.check_call([
+            "bash", "-c",
+            "curl -fsSL https://sdk.kuvixos.com.tr/install.sh | bash"
+        ])
+    except subprocess.CalledProcessError:
+        print(f"{CLR_RED}update failed{CLR_RESET}")
+        return 1
+
+    print(f"{CLR_GREEN}update complete ✔{CLR_RESET}")
+    print("restart your terminal if needed")
+
+    return 0
 
 # ==========================
 # MAIN
@@ -389,6 +426,9 @@ def main():
 
     if cmd == "update-check":
         return cmd_update_check(args)
+
+    if cmd == "update":
+        return cmd_update(args)
 
     print(f"unknown command: {cmd}")
     print_help()
