@@ -1,0 +1,15 @@
+Üzerinde bulunulan dal: master
+
+Henüz bir işleme yok
+
+İzlenmeyen dosyalar:
+  (işlenecekler arasına koymak için "git add <dosya>..." kullanın)
+	.gitignore
+	Makefile
+	README.md
+	examples/
+	include/
+	status.txt
+
+işlemeye bir şey eklenmedi; ancak izlenmeyen dosyalar var
+  (izlemek için "git add" kullanın)
