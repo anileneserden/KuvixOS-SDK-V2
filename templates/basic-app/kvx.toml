@@ -1,0 +1,4 @@
+name = "hello"
+entry = "main.cpp"
+ui = "app.json"
+output = "build/hello.kef"
