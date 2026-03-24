@@ -5,3 +5,4 @@ build/
 *.bin
 status.txt
 diff.txt
+hello/
