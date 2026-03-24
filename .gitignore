@@ -1,21 +1,40 @@
+# ==========================
+# Build outputs
+# ==========================
 build/
-hello/
 dist/
+*/build/
 
+# ==========================
+# Local test projects
+# ==========================
+projects/
+
+# ==========================
+# Binaries / objects
+# ==========================
 *.o
 *.elf
 *.iso
 *.bin
 
-# Temp
+# ==========================
+# Temp / debug
+# ==========================
 *.log
 *.tmp
+status.txt
+diff.txt
 
+# ==========================
 # Python cache
+# ==========================
 __pycache__/
 *.pyc
 
-status.txt
-diff.txt
-dist/
-build/
+# ==========================
+# OS / editor
+# ==========================
+.DS_Store
+.vscode/
+.idea/

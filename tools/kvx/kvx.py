@@ -68,7 +68,7 @@ def cmd_build(args):
     cfg = read_simple_toml(manifest)
 
     entry = Path(cfg.get("entry", "main.cpp"))
-    ui = Path(cfg.get("ui", "app.json"))
+    ui = Path(cfg.get("ui", "layout.json"))
     output = Path(cfg.get("output", "build/app.kef"))
 
     if not entry.exists():
