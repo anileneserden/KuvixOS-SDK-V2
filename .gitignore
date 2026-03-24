@@ -1,8 +1,21 @@
 build/
+hello/
+dist/
+
 *.o
 *.elf
 *.iso
 *.bin
+
+# Temp
+*.log
+*.tmp
+
+# Python cache
+__pycache__/
+*.pyc
+
 status.txt
 diff.txt
-hello/
+dist/
+build/
