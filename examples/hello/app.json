@@ -1,0 +1,26 @@
+{
+  "window": {
+    "title": "SDK V2 Hello",
+    "width": 360,
+    "height": 240,
+    "backgroundColor": "#121212"
+  },
+  "widgets": [
+    {
+      "id": "titleLabel",
+      "type": "label",
+      "text": "KuvixOS SDK V2",
+      "x": 12,
+      "y": 12,
+      "color": "#ffffff"
+    },
+    {
+      "id": "statusLabel",
+      "type": "label",
+      "text": "KEF binary icinden geldi",
+      "x": 12,
+      "y": 40,
+      "color": "#00ff00"
+    }
+  ]
+}
